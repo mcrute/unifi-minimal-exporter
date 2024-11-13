@@ -38,12 +38,17 @@ CGO_ENABLED=0 go build -o unifi-minimal-exporter
 
 ## Running
 
-This exporter requires a Hashicorp Vault instance that can be queried
-for the login credential for the Unifi Controller. It expects the
-credential to have a case-sensitive `username` and `password` field. The
-code also expects a key-value store to be mounted at `kv/` (this is not
-currently configurable). Finally the code expects to authenticate to
-Vault with AppRole authentication.
+This exporter supports using a Hashicorp Vault instance that can be
+queried for the login credential for the Unifi Controller. Alternatively
+the Unifi Controller username and password can be supplied in the
+environment using the `UNIFI_USERNAME` and `UNIFI_PASSWORD` environment
+variables. If both of these variables are specified the Vault logic is
+disabled.
+
+If using Vault, it expects the credential to have a case-sensitive
+`username` and `password` field. The code also expects a key-value store
+to be mounted at `kv/` (this is not currently configurable). Finally the
+code expects to authenticate to Vault with AppRole authentication.
 
 First, create the credential in your Unifi controller that has access
 to all of your sites and store it in Vault as noted above. Then run the

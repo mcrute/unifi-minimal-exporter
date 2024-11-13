@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
+	"os"
 	"time"
 
 	"code.crute.us/mcrute/golib/secrets"
@@ -387,6 +388,15 @@ func boolsToFloat(b ...bool) float64 {
 }
 
 func getUsernamePassword(ctx context.Context, path string) (string, string, error) {
+	// Allow making Vault optional by providing the username and password
+	// in the environment
+	username := os.Getenv("UNIFI_USERNAME")
+	password := os.Getenv("UNIFI_PASSWORD")
+	if username != "" && password != "" {
+		return username, password, nil
+	}
+
+	// Otherwise fall back to querying Vault
 	client, err := secrets.NewVaultClient(nil)
 	if err != nil {
 		return "", "", err
