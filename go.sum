@@ -1,9 +1,9 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-code.crute.us/mcrute/golib v0.4.0 h1:VWxb7v4gGkqL700zxDwgROweBsfx5RbiB35VW0O0oi0=
-code.crute.us/mcrute/golib v0.4.0/go.mod h1:dukLPhs1H8dxtkhXtpJZYo/bMzefLRbdRj9Tj67wdaQ=
-code.crute.us/mcrute/golib/secrets v0.5.3 h1:05YHEvW8doYRN9Lo3nfhSfA8zURByvrMqvQ1F+l6/GA=
-code.crute.us/mcrute/golib/secrets v0.5.3/go.mod h1:m8JB/5Ef1BDdAoJcrnAQaiwxYQybxooQSpY4YlOE3l4=
+code.crute.us/mcrute/golib v0.11.0 h1:JpDuJklQVx4zYpAxEWssDAuPhmgXEbCim8vMiR1JbGk=
+code.crute.us/mcrute/golib v0.11.0/go.mod h1:nB/ZeOhlFWUwGj5jTPJxYVyqDLdO3U9ZvBiH+Kll87s=
+code.crute.us/mcrute/golib/secrets v0.7.0 h1:ROFzeI7ju/D4vjo9zLh1mJ1tMJ9NcEjoJpJVT5fjNzU=
+code.crute.us/mcrute/golib/secrets v0.7.0/go.mod h1:UwGrbxnNkudE+6ocvGtpfOsB96oRfI/AewR8vmw71Vc=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=

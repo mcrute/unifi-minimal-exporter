@@ -3,13 +3,13 @@ module code.crute.us/mcrute/unifi-minimal-exporter
 go 1.22.5
 
 require (
-	code.crute.us/mcrute/golib/secrets v0.5.3
+	code.crute.us/mcrute/golib/secrets v0.7.0
 	github.com/prometheus/client_golang v1.20.5
 	golang.org/x/net v0.30.0
 )
 
 require (
-	code.crute.us/mcrute/golib v0.4.0 // indirect
+	code.crute.us/mcrute/golib v0.11.0 // indirect
 	github.com/armon/go-metrics v0.3.9 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect

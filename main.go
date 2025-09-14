@@ -20,6 +20,8 @@ import (
 	"golang.org/x/net/publicsuffix"
 )
 
+var version string
+
 const (
 	namespace = "unifinet"
 )
@@ -387,7 +389,7 @@ func boolsToFloat(b ...bool) float64 {
 	return 1
 }
 
-func getUsernamePassword(ctx context.Context, path string) (string, string, error) {
+func getUsernamePassword(ctx context.Context, path string, noAutodiscover bool) (string, string, error) {
 	// Allow making Vault optional by providing the username and password
 	// in the environment
 	username := os.Getenv("UNIFI_USERNAME")
@@ -396,8 +398,15 @@ func getUsernamePassword(ctx context.Context, path string) (string, string, erro
 		return username, password, nil
 	}
 
+	var err error
+	var client secrets.ClientManager
+
 	// Otherwise fall back to querying Vault
-	client, err := secrets.NewVaultClient(nil)
+	if noAutodiscover {
+		client, err = secrets.NewVaultClient(nil)
+	} else {
+		client, err = secrets.NewAutodiscoverVaultClient(ctx)
+	}
 	if err != nil {
 		return "", "", err
 	}
@@ -418,13 +427,21 @@ func main() {
 	hostname := flag.String("hostname", "", "Unifi network application hostname")
 	bind := flag.String("bind", ":9120", "Bind address for http server")
 	vaultPath := flag.String("vault-path", "", "Vault path for Unifi network application login")
+	showVersion := flag.Bool("version", false, "Show application version and exit")
+	noVaultAutodiscover := flag.Bool("no-discover-vault", false, "Disable autodiscovery of Vault host")
+
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Printf("Version: %s\n", version)
+		return
+	}
 
 	if *hostname == "" {
 		log.Fatalf("--hostname must be specified")
 	}
 
-	username, password, err := getUsernamePassword(context.Background(), *vaultPath)
+	username, password, err := getUsernamePassword(context.Background(), *vaultPath, *noVaultAutodiscover)
 	if err != nil {
 		log.Fatalf("error fetching Vault credentials: %s", err)
 	}
